@@ -77,6 +77,12 @@ Added:
 
 - requirements.txt
 
+### 6.4 Added Procfile
+
+Added:
+
+- Procfile
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
