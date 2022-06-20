@@ -89,6 +89,15 @@ Added:
 
 - Updated requirements.txt
 
+### 6.6 Project connected to mongodb
+
+Added:
+
+- Templates folder
+- base.html
+- index.html
+- MongoDB via URI
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
