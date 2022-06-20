@@ -83,6 +83,12 @@ Added:
 
 - Procfile
 
+### 6.5 Deployed to heroku
+
+Added:
+
+- Updated requirements.txt
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
