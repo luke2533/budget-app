@@ -40,11 +40,11 @@
 
 ### 4.2 CSS3
 
-### 4.3 Tailwind
+### 4.3 Bootstrap
 
 ### 4.4 JavaScript
 
-### 4.5 ??? JS framework
+### 4.5 jQuery
 
 ### 4.6 Python
 
@@ -97,6 +97,17 @@ Added:
 - base.html
 - index.html
 - MongoDB via URI
+
+### 6.7 Static files added and frontend setup
+
+Added:
+
+- Static folders
+- style.css
+- script.js
+- Bootstrap added
+- jQuery added
+- Font awesome added
 
 ## 7.0 Deployment
 

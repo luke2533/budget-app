@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
 
@@ -18,10 +19,9 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def test():
-    luke = {"name": "luike"}
-    test = mongo.db.users.find(luke)
+    
 
-    return render_template("index.html", test=test)
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
