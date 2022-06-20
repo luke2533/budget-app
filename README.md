@@ -71,6 +71,12 @@ Added:
 - Installed Flask
 - Added README template
 
+### 6.3 requirements.txt
+
+Added:
+
+- requirements.txt
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
