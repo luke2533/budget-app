@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -18,8 +19,49 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def test():
+def budget_app():
     return render_template("index.html")
+
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("signup"))
+
+        password = request.form.get("password")
+        check_password = request.form.get("confirm-password")
+        email = request.form.get("email")
+        check_email = request.form.get("confirm-email")
+
+        if password != check_password:
+            flash("Please make sure the passwords match")
+            return redirect(url_for("signup"))
+
+        if email != check_email:
+            flash("Please make sure the emails match")
+            return redirect(url_for("signup"))
+
+        new_user = {
+            "username": request.form.get("username").lower(),
+            "email": request.form.get("email"),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(new_user)
+
+        session["user"] = request.form.get("username").lower()
+        flash("Register complete")
+        return redirect(url_for("budget_app"))
+    return render_template("signup.html")
+
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 
 if __name__ == "__main__":

@@ -111,10 +111,19 @@ Added:
 
 ### 6.8 Nav and footer v0.0.1
 
-Added:
+Added v0.0.1:
 
 - Navbar responsive on all devices
 - Footer responsive on all devices
+
+### 6.9 Users can securely create an account v0.1.0
+
+Added v0.1.0:
+
+- login.html file
+- signup.html file
+- Werrkzeug secrurity added
+- Sign up functionality
 
 ## 7.0 Deployment
 
