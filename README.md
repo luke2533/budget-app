@@ -109,6 +109,13 @@ Added:
 - jQuery added
 - Font awesome added
 
+### 6.8 Nav and footer v0.0.1
+
+Added:
+
+- Navbar responsive on all devices
+- Footer responsive on all devices
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

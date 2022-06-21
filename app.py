@@ -19,8 +19,6 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def test():
-    
-
     return render_template("index.html")
 
 

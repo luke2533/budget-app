@@ -1,0 +1,11 @@
+/* Navbar */
+
+.navbar {
+    height: 64px;
+}
+
+/* Footer */
+
+.footer-lower {
+    background-color: rgba(0, 0, 0, 0.2)
+}
