@@ -138,6 +138,14 @@ v0.2.1 Additions:
 
 - Users can log out of their account
 
+### 6.12 Nav and footer links added v0.2.2
+
+v0.2.2 Additions:
+
+- Log in and sign up links show when users aren't logged in
+- Log out and other links show only when users are logged in
+- Footer links
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

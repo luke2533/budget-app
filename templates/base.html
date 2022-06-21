@@ -26,9 +26,16 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-link" href="{{ url_for('signup') }}">Sign up</a>
-                    <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
-                    <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                    {% if session.user %}
+                        {% if username is not none %}
+                            <a class="nav-link" href="">Budget thing</a>
+                            <a class="nav-link" href="">Budget thing</a>
+                        {% endif %}
+                        <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+                        <a class="nav-link" href="{{ url_for('signup') }}">Sign up</a>
+                    {% endif %}
                 </div>
             </div>
           </nav>
@@ -58,29 +65,39 @@
                     <div class="row text-center d-flex justify-content-center pt-5">
                         <div class="col-md-2">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-white">About us</a>
+                                <a href="/" class="text-white">Home</a>
+                            </h6>
+                        </div>
+                        {% if session.user %}
+                            {% if username is not none %}
+                                <div class="col-md-2">
+                                    <h6 class="text-uppercase font-weight-bold">
+                                        <a href="#!" class="text-white">Budget thing</a>
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <h6 class="text-uppercase font-weight-bold">
+                                        <a href="#!" class="text-white">Budget thing</a>
+                                    </h6>
+                                </div>
+                            {% endif %}
+                            <div class="col-md-2">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <a href="{{ url_for('logout') }}" class="text-white">Log out</a>
+                                </h6>
+                            </div>
+                        {% else %}
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="{{ url_for('login') }}" class="text-white">Log in</a>
                             </h6>
                         </div>
                         <div class="col-md-2">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-white">Products</a>
+                                <a href="{{ url_for('signup') }}" class="text-white">Sign up</a>
                             </h6>
                         </div>
-                        <div class="col-md-2">
-                            <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-white">Awards</a>
-                            </h6>
-                        </div>
-                        <div class="col-md-2">
-                            <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-white">Help</a>
-                            </h6>
-                        </div>
-                        <div class="col-md-2">
-                            <h6 class="text-uppercase font-weight-bold">
-                                <a href="#!" class="text-white">Contact</a>
-                            </h6>
-                        </div>
+                        {% endif %}
                     </div>
                 </section>
                 <hr>
