@@ -132,6 +132,12 @@ v0.2.0 Additions:
 - Log in functionality
 - Added flash messages to base template
 
+### 6.11 Users can log out of their account v0.2.1
+
+v0.2.1 Additions:
+
+- Users can log out of their account
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
