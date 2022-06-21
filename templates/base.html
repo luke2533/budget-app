@@ -34,6 +34,20 @@
           </nav>
     </header>
 
+    <section>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row justify-content-center flashes">
+                        <div class="col-3">
+                            <h4 class="flash">{{ message }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
     {% block content %}
     {% endblock %}
     
