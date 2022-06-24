@@ -159,6 +159,17 @@ v0.3.0 Additions:
 
 - Successfuly posted record to mongodb
 
+### 6.15 Basic summary page structure and test file v0.3.1
+
+v0.3.1 Additions:
+
+- Summary page basic structure
+- summary.html
+- testing.md
+- Displays users records
+
+Bug #1 found: Summary link throws error 404 when clicked on from home page
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

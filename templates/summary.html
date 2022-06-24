@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <!-- Any future summary features will go above the  -->
+                <h1>{{ username.capitalize() }}'s Records</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Card</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Notes</th>
+                            <th scope="col">Balance</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for record in user_records %}
+                            <tr>
+                                <td>{{ record.date }}</td>
+                                <td>{{ record.card }}</td>
+                                <td>{{ record.name }}</td>
+                                <td>{{ record.category }}</td>
+                                <td>{{ record.amount }}</td>
+                                <td>{{ record.notes }}</td>
+                                <td>{{ record.balance }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

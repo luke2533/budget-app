@@ -120,6 +120,18 @@ def add_record():
     return render_template("add_record.html", username=username)
 
 
+@app.route("/summary/<username>")
+def summary(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"] == username:
+        user_records = mongo.db.records.find({"username": session["user"]}
+                                             ).sort("date", 1)
+
+    return render_template("summary.html", username=username, user_records=user_records)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
