@@ -157,7 +157,7 @@ v0.2.3 Additions:
 
 v0.3.0 Additions:
 
-- Successfuly posted record to mongodb
+- Successfuly posted record to mongoDB
 
 ### 6.15 Basic summary page structure and test file v0.3.1
 
@@ -169,6 +169,14 @@ v0.3.1 Additions:
 - Displays users records
 
 Bug #1 found: Summary link throws error 404 when clicked on from home page
+
+### 6.16 Account page and set balance POST's v0.3.2
+
+v0.3.2 Additions:
+
+- Account page
+- Set account balance
+- Balance POST's to mongoDB
 
 ## 7.0 Deployment
 

@@ -132,6 +132,22 @@ def summary(username):
     return render_template("summary.html", username=username, user_records=user_records)
 
 
+@app.route("/account", methods=["GET", "POST"])
+def account():
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    account_balance = request.form.get("account-balance")
+
+    balance = {
+        "username": username,
+        "account_balance": account_balance
+    }
+    mongo.db.balance.insert_one(balance)
+
+    return render_template("account.html", username=username)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
