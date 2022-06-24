@@ -146,6 +146,13 @@ v0.2.2 Additions:
 - Log out and other links show only when users are logged in
 - Footer links
 
+### 6.13 add_record page v0.2.3
+
+v0.2.3 Additions:
+
+- add_record.html added
+- Add record template
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

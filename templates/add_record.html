@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-5 col-lg-4 col-xl-3">
+                <form action="">
+                    <input type="date" placeholder="Date" name="date" id="date" required>
+                    <hr>
+                    <input type="text" placeholder="Name of card" name="card" id="card" required>
+                    <hr>
+                    <input type="text" placeholder="Transaction name" name="name" id="name" required>
+                    <hr>
+                    <select name="category" id="category" required>
+                        <option value="income">Income</option>
+                        <option value="rent">Rent</option>
+                        <option value="debt">Debt</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="travel">Travel</option>
+                        <option value="subscriptions">Subscriptions</option>
+                        <option value="holiday">Holdiay</option>
+                        <option value="entertainment">Entertainment</option>
+                    </select>
+                    <hr>
+                    <input type="number" placeholder="Amount" name="amount" id="amount" required>
+                    <hr>
+                    <input type="text" placeholder="Notes" name="notes" id="notes">
+                    <hr>
+                    <input type="hidden" name="balance" id="balance">
+                    <!-- This is placeholder not sure how i will calculate it -->
+                    <button type="submit">Click here to submit record</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
