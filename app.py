@@ -1,5 +1,7 @@
 import os
+import re
 from tabnanny import check
+from click import edit
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -137,15 +139,35 @@ def account():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-    account_balance = request.form.get("account-balance")
+    balance_exists = mongo.db.balance.find_one(
+            {"username": username})
 
-    balance = {
-        "username": username,
-        "account_balance": account_balance
-    }
-    mongo.db.balance.insert_one(balance)
+    if request.method == "POST":
 
-    return render_template("account.html", username=username)
+        if balance_exists is None:
+
+            account_balance = request.form.get("account-balance")
+
+            balance = {
+                "username": username,
+                "account_balance": account_balance
+            }
+            mongo.db.balance.insert_one(balance)
+
+        else:
+            new_balance = request.form.get("new-balance")
+
+            # balance_exists = mongo.db.balance.find_one(
+            #     {"username": username})["account_balance"]
+
+            edit_balance = {
+                "account_balance": new_balance
+            }
+            mongo.db.balance.update_one({"username": username}, {"$set": edit_balance})
+
+        return redirect(url_for("account", username=username, balance_exists=balance_exists))
+
+    return render_template("account.html", username=username, balance_exists=balance_exists)
 
 
 if __name__ == "__main__":

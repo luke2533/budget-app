@@ -178,6 +178,12 @@ v0.3.2 Additions:
 - Set account balance
 - Balance POST's to mongoDB
 
+### 6.17 Users can update their account balance v0.3.3
+
+v0.3.3 Additions:
+
+- Users can update their account balance
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
