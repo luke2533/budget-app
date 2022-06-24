@@ -89,9 +89,35 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_record")
+@app.route("/add_record", methods=["GET", "POST"])
 def add_record():
-    return render_template("add_record.html")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if request.method == "POST":
+        date = request.form.get("date")
+        card = request.form.get("card")
+        name = request.form.get("name")
+        category = request.form.get("category")
+        amount = request.form.get("amount")
+        notes = request.form.get("notes")
+        balance = 4
+
+        record = {
+            "username": username,
+            "date": date,
+            "card": card,
+            "name": name,
+            "category": category,
+            "amount": float(amount),
+            "notes": notes,
+            "balance": balance
+        }
+        mongo.db.records.insert_one(record)
+
+        flash("Record successfully added")
+
+    return render_template("add_record.html", username=username)
 
 
 if __name__ == "__main__":

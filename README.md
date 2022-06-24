@@ -153,6 +153,12 @@ v0.2.3 Additions:
 - add_record.html added
 - Add record template
 
+### 6.14 Successfuly posted record to mongodb v0.3.0
+
+v0.3.0 Additions:
+
+- Successfuly posted record to mongodb
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

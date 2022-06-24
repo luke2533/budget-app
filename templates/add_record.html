@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-10 col-md-5 col-lg-4 col-xl-3">
-                <form action="">
+                <form action="{{ url_for('add_record' ) }}" method="POST">
                     <input type="date" placeholder="Date" name="date" id="date" required>
                     <hr>
                     <input type="text" placeholder="Name of card" name="card" id="card" required>
