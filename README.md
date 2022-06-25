@@ -193,6 +193,15 @@ v0.3.4 Additions:
 - Other records subtract the amount from the old balance
 - Updates the user's total balance
 
+### 6.19 Category tracker created upon user sign up v0.3.5
+
+v0.3.5 Additions:
+
+- When users sign up it creates a categories document on MongoDB to keep track of spending
+- Updates categories with new values
+
+Issue: Resets categories everytime record is added fix will come in next version
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

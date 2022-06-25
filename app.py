@@ -2,6 +2,7 @@ from hashlib import new
 import os
 import re
 from tabnanny import check
+from this import s
 from types import new_class
 from click import edit
 from flask import (
@@ -58,6 +59,22 @@ def signup():
         }
         mongo.db.users.insert_one(new_user)
 
+        x = 0
+
+        categories = {
+            "username": request.form.get("username").lower(),
+            "income": float(x),
+            "rent": float(x),
+            "debt": float(x),
+            "groceries": float(x),
+            "travel": float(x),
+            "subscriptions": float(x),
+            "holdiay": float(x),
+            "entertainment": float(x),
+            "total": float(x)
+        }
+        mongo.db.categories.insert_one(categories)
+
         session["user"] = request.form.get("username").lower()
         flash("Register complete")
         return redirect(url_for("budget_app"))
@@ -98,6 +115,9 @@ def add_record():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    categories = mongo.db.categories.find_one(
+        {"username": session["user"]})
+
     if request.method == "POST":
         date = request.form.get("date")
         card = request.form.get("card")
@@ -110,11 +130,8 @@ def add_record():
         
         if category == "income":
             new_balance = float(balance) + float(amount)
-            print(new_balance)
-        
         else:
             new_balance = float(balance) - float(amount)
-            print(new_balance)
 
         record = {
             "username": username,
@@ -133,6 +150,67 @@ def add_record():
         }
         mongo.db.balance.update_one({"username": username}, {"$set": update_balance})
 
+        income = 0
+        rent = 0
+        debt = 0
+        groceries = 0
+        travel = 0
+        subscriptions = 0
+        holdiay = 0
+        entertainment = 0
+        # Temporary
+
+        if category == "income":
+            income = float(amount) + categories["income"]
+            # update_categories = {
+            #     "income": income,
+            #     "total": total_sum
+            # }
+
+        elif category == "rent":
+            rent = float(amount) + categories["rent"]
+
+        elif category == "debt":
+            debt = float(amount) + categories["debt"]
+
+        elif category == "groceries":
+            groceries = float(amount) + categories["groceries"]
+
+        elif category == "travel":
+            travel = float(amount) + categories["travel"]
+
+        elif category == "subscriptions":
+            subscriptions = float(amount) + categories["subscriptions"]
+
+        elif category == "holdiay":
+            holdiay = float(amount) + categories["holdiay"]
+
+        elif category == "entertainment":
+            entertainment = float(amount) + categories["entertainment"]
+        # Temporary
+
+        total = [float(income), float(rent), float(debt), float(groceries), 
+                 float(travel), float(subscriptions), float(holdiay), float(entertainment)]
+        # Temporary
+        
+        total_sum = sum(total)
+    
+        update_categories = {
+            "income": income,
+            "rent": rent,
+            "debt": debt,
+            "groceries": groceries,
+            "travel": travel,
+            "subscriptions": subscriptions,
+            "holdiay": holdiay,
+            "entertainment": entertainment,
+            "total": total_sum
+        }
+        mongo.db.categories.update_one({"username": username}, {"$set": update_categories})
+        print(rent)
+        print(income)
+        print(categories)
+
         flash("Record successfully added")
 
     return render_template("add_record.html", username=username)
@@ -143,11 +221,14 @@ def summary(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    balance = mongo.db.balance.find_one(
+            {"username": session["user"]})["account_balance"]
+
     if session["user"] == username:
         user_records = mongo.db.records.find({"username": session["user"]}
                                              ).sort("date", 1)
 
-    return render_template("summary.html", username=username, user_records=user_records)
+    return render_template("summary.html", username=username, user_records=user_records, balance=balance)
 
 
 @app.route("/account", methods=["GET", "POST"])
