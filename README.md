@@ -184,6 +184,15 @@ v0.3.3 Additions:
 
 - Users can update their account balance
 
+### 6.18 Adding records changes the accounts balance v0.3.4
+
+v0.3.4 Additions:
+
+- testing.md updates
+- Income records add the amount to the new balance
+- Other records subtract the amount from the old balance
+- Updates the user's total balance
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

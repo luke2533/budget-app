@@ -1,6 +1,8 @@
+from hashlib import new
 import os
 import re
 from tabnanny import check
+from types import new_class
 from click import edit
 from flask import (
     Flask, flash, render_template,
@@ -103,7 +105,16 @@ def add_record():
         category = request.form.get("category")
         amount = request.form.get("amount")
         notes = request.form.get("notes")
-        balance = 4
+        balance = mongo.db.balance.find_one(
+            {"username": session["user"]})["account_balance"]
+        
+        if category == "income":
+            new_balance = float(balance) + float(amount)
+            print(new_balance)
+        
+        else:
+            new_balance = float(balance) - float(amount)
+            print(new_balance)
 
         record = {
             "username": username,
@@ -113,9 +124,14 @@ def add_record():
             "category": category,
             "amount": float(amount),
             "notes": notes,
-            "balance": balance
+            "balance": float(new_balance)
         }
         mongo.db.records.insert_one(record)
+
+        update_balance = {
+            "account_balance": new_balance
+        }
+        mongo.db.balance.update_one({"username": username}, {"$set": update_balance})
 
         flash("Record successfully added")
 
@@ -145,7 +161,6 @@ def account():
     if request.method == "POST":
 
         if balance_exists is None:
-
             account_balance = request.form.get("account-balance")
 
             balance = {
@@ -156,18 +171,17 @@ def account():
 
         else:
             new_balance = request.form.get("new-balance")
-
-            # balance_exists = mongo.db.balance.find_one(
-            #     {"username": username})["account_balance"]
-
+            
             edit_balance = {
                 "account_balance": new_balance
             }
             mongo.db.balance.update_one({"username": username}, {"$set": edit_balance})
 
-        return redirect(url_for("account", username=username, balance_exists=balance_exists))
+        return redirect(url_for("account", username=username,
+                                balance_exists=balance_exists))
 
-    return render_template("account.html", username=username, balance_exists=balance_exists)
+    return render_template("account.html", username=username,
+                           balance_exists=balance_exists)
 
 
 if __name__ == "__main__":
