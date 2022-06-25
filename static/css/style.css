@@ -9,3 +9,10 @@
 .footer-lower {
     background-color: rgba(0, 0, 0, 0.2)
 }
+
+/* Sign up page */
+
+.form-input {
+    width: 300px;
+    /* Temporary fix for sign up page*/
+}

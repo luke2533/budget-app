@@ -6,15 +6,18 @@
             <div class="col-10 col-md-5 col-lg-4 col-xl-3">
                 <form action="{{ url_for('signup') }}" method="POST">
                     <h1>Sign up here</h1>
-                    <input type="text" placeholder="Username" id="username" name="username" pattern="^[a-zA-Z0-9]{5,15}$" minlength="4" maxlength="15" required>
+                    <input type="text" class="form-input" placeholder="Username" id="username" name="username" pattern="^[a-zA-Z0-9]{5,15}$" minlength="4" maxlength="15" required>
                     <br>
-                    <input type="email" placeholder="Email" id="email" name="email" required>
+                    <input type="email" class="form-input" placeholder="Email" id="email" name="email" required>
                     <br>
-                    <input type="email" placeholder="Confirm Email" id="confirm-email" name="confirm-email" required>
+                    <input type="email" class="form-input" placeholder="Confirm Email" id="confirm-email" name="confirm-email" required>
                     <br>
-                    <input type="password" placeholder="Password" id="password" name="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    <input type="password" class="form-input" placeholder="Password" id="password" name="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <br>
-                    <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm-password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    <input type="password" class="form-input" placeholder="Confirm Password" id="confirm-password" name="confirm-password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    <br>
+                    <!-- <label for="account-balance">Set account balance</label> -->
+                    <input type="number" class="form-input" placeholder="Set current bank balance" step="0.01" name="account-balance" id="account-balance" required>
                     <br>
                     <button type="submit">Click here to sign up</button>
                     <p class="text-center">Already have an account? <a href="">Log in here</a></p>

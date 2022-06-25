@@ -69,11 +69,19 @@ def signup():
             "groceries": float(x),
             "travel": float(x),
             "subscriptions": float(x),
-            "holdiay": float(x),
+            "holiday": float(x),
             "entertainment": float(x),
             "total": float(x)
         }
         mongo.db.categories.insert_one(categories)
+
+        account_balance = request.form.get("account-balance")
+        
+        balance = {
+            "username": request.form.get("username").lower(),
+            "account_balance": account_balance
+        }
+        mongo.db.balance.insert_one(balance)
 
         session["user"] = request.form.get("username").lower()
         flash("Register complete")
@@ -162,54 +170,70 @@ def add_record():
 
         if category == "income":
             income = float(amount) + categories["income"]
-            # update_categories = {
-            #     "income": income,
-            #     "total": total_sum
-            # }
+            total_sum = income + categories["total"]
+            update_categories = {
+                "income": income,
+                "total": total_sum
+            }
 
         elif category == "rent":
             rent = float(amount) + categories["rent"]
+            total_sum = rent + categories["total"]
+            update_categories = {
+                "rent": rent,
+                "total": total_sum
+            }
 
         elif category == "debt":
             debt = float(amount) + categories["debt"]
+            total_sum = debt + categories["total"]
+            update_categories = {
+                "debt": debt,
+                "total": total_sum
+            }
 
         elif category == "groceries":
             groceries = float(amount) + categories["groceries"]
+            total_sum = groceries + categories["total"]
+            update_categories = {
+                "groceries": groceries,
+                "total": total_sum
+            }
 
         elif category == "travel":
             travel = float(amount) + categories["travel"]
+            total_sum = travel + categories["total"]
+            update_categories = {
+                "travel": travel,
+                "total": total_sum
+            }
 
         elif category == "subscriptions":
             subscriptions = float(amount) + categories["subscriptions"]
+            total_sum = subscriptions + categories["total"]
+            update_categories = {
+                "subscriptions": subscriptions,
+                "total": total_sum
+            }
 
-        elif category == "holdiay":
-            holdiay = float(amount) + categories["holdiay"]
+        elif category == "holiday":
+            holiday = float(amount) + categories["holiday"]
+            total_sum = holiday + categories["total"]
+            update_categories = {
+                "holiday": holiday,
+                "total": total_sum
+            }
 
         elif category == "entertainment":
             entertainment = float(amount) + categories["entertainment"]
+            total_sum = entertainment + categories["total"]
+            update_categories = {
+                "entertainment": entertainment,
+                "total": total_sum
+            }
         # Temporary
-
-        total = [float(income), float(rent), float(debt), float(groceries), 
-                 float(travel), float(subscriptions), float(holdiay), float(entertainment)]
-        # Temporary
-        
-        total_sum = sum(total)
     
-        update_categories = {
-            "income": income,
-            "rent": rent,
-            "debt": debt,
-            "groceries": groceries,
-            "travel": travel,
-            "subscriptions": subscriptions,
-            "holdiay": holdiay,
-            "entertainment": entertainment,
-            "total": total_sum
-        }
         mongo.db.categories.update_one({"username": username}, {"$set": update_categories})
-        print(rent)
-        print(income)
-        print(categories)
 
         flash("Record successfully added")
 
@@ -240,7 +264,8 @@ def account():
             {"username": username})
 
     if request.method == "POST":
-
+        
+        # Remove later =====================
         if balance_exists is None:
             account_balance = request.form.get("account-balance")
 
@@ -249,6 +274,7 @@ def account():
                 "account_balance": account_balance
             }
             mongo.db.balance.insert_one(balance)
+        # Remove later =====================
 
         else:
             new_balance = request.form.get("new-balance")

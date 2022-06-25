@@ -202,6 +202,14 @@ v0.3.5 Additions:
 
 Issue: Resets categories everytime record is added fix will come in next version
 
+### 6.20 Category tracker updates after adding record and sign up page set account balance v0.3.6
+
+v0.3.6 Additions:
+
+- When a record is added the category tracker updates with the new category total and grand total
+- v0.3.5 Issue resloved category no longer resets upon adding records
+- Sign up page set account balance so users don't have to go to profile page first
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
