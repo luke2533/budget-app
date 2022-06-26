@@ -1,6 +1,5 @@
 from hashlib import new
 import os
-import re
 from tabnanny import check
 from this import s
 from types import new_class
@@ -292,9 +291,35 @@ def account():
                            balance_exists=balance_exists)
 
 
-@app.route("/paycheck")
+@app.route("/paycheck", methods=["GET", "POST"])
 def paycheck():
-    return render_template("paycheck.html")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if request.method == "POST":
+        rent = request.form.get("rent")
+        budget = request.form.get("budget")
+        subscriptions = request.form.get("subscriptions")
+        debt = request.form.get("debt")
+        savings = request.form.get("savings")
+        spare = request.form.get("spare")
+        total = request.form.get("total")
+
+        paycheck = {
+            "username": username,
+            "rent": float(rent),
+            "budget": float(budget),
+            "subscriptions": float(subscriptions),
+            "debt": float(debt),
+            "savings": float(savings),
+            "spare": float(spare),
+            "total": float(total),
+        }
+        mongo.db.paycheck.insert_one(paycheck)
+        # Future versions might include nested objectid (Like Coinvue)
+        return redirect(url_for("paycheck", username=username))
+
+    return render_template("paycheck.html", username=username)
 
 
 if __name__ == "__main__":

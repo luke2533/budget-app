@@ -218,6 +218,14 @@ v0.3.7 Additions:
 - Created paycheck.html
 - Set up paycheck page links and basic structure
 
+### 6.22 Successful post from paycheck page v0.4.0
+
+v0.4.0 Additions:
+
+- Set paycheck income
+- Created paycheck collection on MongoDB
+- Successfully posted to MongoDB paycheck collection
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
