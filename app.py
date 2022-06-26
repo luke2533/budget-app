@@ -1,9 +1,4 @@
-from hashlib import new
 import os
-from tabnanny import check
-from this import s
-from types import new_class
-from click import edit
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -163,7 +158,7 @@ def add_record():
         groceries = 0
         travel = 0
         subscriptions = 0
-        holdiay = 0
+        holiday = 0
         entertainment = 0
         # Temporary
 
@@ -320,6 +315,11 @@ def paycheck():
         return redirect(url_for("paycheck", username=username))
 
     return render_template("paycheck.html", username=username)
+
+
+@app.route("/test")
+def test():
+    return render_template("test.html")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@
                 <!-- <form name="setPaycheck"> -->
                 <label for="set-paycheck">Enter estimate for paycheck</label>
                 <input type="text" name="set-paycheck" id="set-paycheck">
-                <button onclick="setPaycheck(grandTotal)">Set paycheck</button>
+                <button onclick="setPaycheck()">Set paycheck</button>
                 <!-- </form> -->
             </div>
         </div>
@@ -29,93 +29,19 @@
                     </div>
                     <div class="col-6">
                         <form action="{{ url_for('paycheck') }}" method="POST">
-                            <input type="number" step="0.01" class="paycheck-input" placeholder="Rent" id="rent" name="rent">
-                            <input type="number" step="0.01" class="paycheck-input" placeholder="Budget" id="budget" name="budget">
-                            <input type="number" step="0.01" class="paycheck-input" placeholder="Subscriptions" id="subscriptions" name="subscriptions">
-                            <input type="number" step="0.01" class="paycheck-input" placeholder="Debt" id="debt" name="debt">
-                            <input type="number" step="0.01" class="paycheck-input" placeholder="Savings" id="savings" name="savings">
-                            <input type="number" step="0.01" class="paycheck-input" placeholder="Spare" id="spare" name="spare">
-                            <input type="text" class="paycheck-input" placeholder="Total" id="total" name="total" readonly>
+                            <input type="number" step="0.01" class="paycheck-input" value="0" placeholder="Rent" id="rent" name="rent" onblur="calcPay()">
+                            <input type="number" step="0.01" class="paycheck-input" value="0" placeholder="Budget" id="budget" name="budget" onblur="calcPay()">
+                            <input type="number" step="0.01" class="paycheck-input" value="0" placeholder="Subscriptions" id="subscriptions" name="subscriptions" onblur="calcPay()">
+                            <input type="number" step="0.01" class="paycheck-input" value="0" placeholder="Debt" id="debt" name="debt" onblur="calcPay()">
+                            <input type="number" step="0.01" class="paycheck-input" value="0" placeholder="Savings" id="savings" name="savings" onblur="calcPay()">
+                            <input type="number" step="0.01" class="paycheck-input" value="0" placeholder="Spare" id="spare" name="spare" onblur="calcPay()" readonly>
+                            <p id="total"><input type="hidden" name="total" id="total"></p>
                             <button type="submit">Save changes</button>
                         </form>
                     </div>
                 </div>
             </div>
-
-            <div class="col-3 paycheck-box">
-                <h4 class="text-center">Month 2</h4>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="text-center">Rent</p>
-                        <p class="text-center">Budget</p>
-                        <p class="text-center">Subscriptions</p>
-                        <p class="text-center">Debt</p>
-                        <p class="text-center">Savings</p>
-                        <p class="text-center">Spare</p>
-                        <p class="text-center"><b>Total</b></p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">£250</p>
-                        <p class="text-center">£80</p>
-                        <p class="text-center">£105</p>
-                        <p class="text-center">£0</p>
-                        <p class="text-center">£665</p>
-                        <p class="text-center">£0</p>
-                        <p class="text-center"><b>£1100</b></p>
-                    </div>
-                </div>
-            </div>
         </div>
-
-        <!-- <div class="row justify-content-center">
-            <div class="col-3 paycheck-box">
-                <h4 class="text-center">Month 3</h4>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="text-center">Rent</p>
-                        <p class="text-center">Budget</p>
-                        <p class="text-center">Subscriptions</p>
-                        <p class="text-center">Debt</p>
-                        <p class="text-center">Savings</p>
-                        <p class="text-center">Spare</p>
-                        <p class="text-center"><b>Total</b></p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">£250</p>
-                        <p class="text-center">£80</p>
-                        <p class="text-center">£105</p>
-                        <p class="text-center">£0</p>
-                        <p class="text-center">£665</p>
-                        <p class="text-center">£0</p>
-                        <p class="text-center"><b>£1100</b></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3 paycheck-box">
-                <h4 class="text-center">Month 4</h4>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="text-center">Rent</p>
-                        <p class="text-center">Budget</p>
-                        <p class="text-center">Subscriptions</p>
-                        <p class="text-center">Debt</p>
-                        <p class="text-center">Savings</p>
-                        <p class="text-center">Spare</p>
-                        <p class="text-center"><b>Total</b></p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">£250</p>
-                        <p class="text-center">£80</p>
-                        <p class="text-center">£105</p>
-                        <p class="text-center">£0</p>
-                        <p class="text-center">£665</p>
-                        <p class="text-center">£0</p>
-                        <p class="text-center"><b>£1100</b></p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 
 {% endblock %}

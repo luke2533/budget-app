@@ -226,6 +226,13 @@ v0.4.0 Additions:
 - Created paycheck collection on MongoDB
 - Successfully posted to MongoDB paycheck collection
 
+### 6.23 Auto caclulates total paycheck v0.4.1
+
+v0.4.1 Additions:
+
+- Auto caclulates total paycheck
+- Created test.html
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
