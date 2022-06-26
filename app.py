@@ -170,10 +170,8 @@ def add_record():
 
         if category == "income":
             income = float(amount) + categories["income"]
-            total_sum = income + categories["total"]
             update_categories = {
-                "income": income,
-                "total": total_sum
+                "income": income
             }
 
         elif category == "rent":
@@ -248,11 +246,14 @@ def summary(username):
     balance = mongo.db.balance.find_one(
             {"username": session["user"]})["account_balance"]
 
+    categories = mongo.db.categories.find_one({"username": session["user"]})
+
     if session["user"] == username:
         user_records = mongo.db.records.find({"username": session["user"]}
                                              ).sort("date", 1)
 
-    return render_template("summary.html", username=username, user_records=user_records, balance=balance)
+    return render_template("summary.html", username=username, user_records=user_records,
+                           balance=balance, categories=categories)
 
 
 @app.route("/account", methods=["GET", "POST"])
@@ -289,6 +290,11 @@ def account():
 
     return render_template("account.html", username=username,
                            balance_exists=balance_exists)
+
+
+@app.route("/paycheck")
+def paycheck():
+    return render_template("paycheck.html")
 
 
 if __name__ == "__main__":

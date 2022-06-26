@@ -4,24 +4,35 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-8">
+                <h1 class="text-left">£{{ balance }}</h1>
                 <!-- Category summary -->
-                <h1>Category summary</h1>
-                <table>
+                <h2 class="text-center">Category summary</h2>
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Income</th>
+                            <th scope="col">Rent</th>
                             <th scope="col">Debt</th>
                             <th scope="col">Groceries</th>
                             <th scope="col">Travel</th>
                             <th scope="col">Subscriptions</th>
                             <th scope="col">Holdiay</th>
                             <th scope="col">Entertainment</th>
+                            <th scope="col"><b>Total</b></th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-                            <td></td>
+                            <td>£{{ categories.income }}</td>
+                            <td>£{{ categories.rent }}</td>
+                            <td>£{{ categories.debt }}</td>
+                            <td>£{{ categories.groceries }}</td>
+                            <td>£{{ categories.travel }}</td>
+                            <td>£{{ categories.subscriptions }}</td>
+                            <td>£{{ categories.holiday }}</td>
+                            <td>£{{ categories.entertainment }}</td>
+                            <td><b>£{{ categories.total }}</b></td>
                         </tr>
                     </tbody>
                 </table>
@@ -31,8 +42,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <!-- Any future summary features will go above the  -->
-                <h1>{{ username.capitalize() }}'s Records</h1>
-                <p><b>{{ balance }}</b></p>
+                <h2 class="text-center">{{ username.capitalize() }}'s Records</h2>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -52,10 +62,10 @@
                                 <td>{{ record.date }}</td>
                                 <td>{{ record.card }}</td>
                                 <td>{{ record.name }}</td>
-                                <td>{{ record.category }}</td>
-                                <td>{{ record.amount }}</td>
+                                <td>{{ record.category.capitalize() }}</td>
+                                <td>£{{ record.amount }}</td>
                                 <td>{{ record.notes }}</td>
-                                <td>{{ record.balance }}</td>
+                                <td>£{{ record.balance }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

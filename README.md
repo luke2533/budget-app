@@ -210,6 +210,14 @@ v0.3.6 Additions:
 - v0.3.5 Issue resloved category no longer resets upon adding records
 - Sign up page set account balance so users don't have to go to profile page first
 
+### 6.21 Category tracker on summary page and paycheck basic structure setup v0.3.7
+
+v0.3.7 Additions:
+
+- Summary page displays category tracker and totals them up
+- Created paycheck.html
+- Set up paycheck page links and basic structure
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment

@@ -16,3 +16,11 @@
     width: 300px;
     /* Temporary fix for sign up page*/
 }
+
+/* Paycheck */
+
+.paycheck-box {
+    border: solid black 3px;
+    padding: 25px;
+    margin: 20px;
+}
