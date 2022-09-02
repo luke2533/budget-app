@@ -233,6 +233,12 @@ v0.4.1 Additions:
 - Auto caclulates total paycheck
 - Created test.html
 
+### 6.24
+
+v0.4.2 Additions:
+
+
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
