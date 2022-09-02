@@ -286,42 +286,6 @@ def account():
                            balance_exists=balance_exists)
 
 
-@app.route("/paycheck", methods=["GET", "POST"])
-def paycheck():
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-
-    if request.method == "POST":
-        rent = request.form.get("rent")
-        budget = request.form.get("budget")
-        subscriptions = request.form.get("subscriptions")
-        debt = request.form.get("debt")
-        savings = request.form.get("savings")
-        spare = request.form.get("spare")
-        total = request.form.get("total")
-
-        paycheck = {
-            "username": username,
-            "rent": float(rent),
-            "budget": float(budget),
-            "subscriptions": float(subscriptions),
-            "debt": float(debt),
-            "savings": float(savings),
-            "spare": float(spare),
-            "total": float(total),
-        }
-        mongo.db.paycheck.insert_one(paycheck)
-        # Future versions might include nested objectid (Like Coinvue)
-        return redirect(url_for("paycheck", username=username))
-
-    return render_template("paycheck.html", username=username)
-
-
-@app.route("/test")
-def test():
-    return render_template("test.html")
-
-
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

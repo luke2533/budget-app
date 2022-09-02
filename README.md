@@ -233,11 +233,15 @@ v0.4.1 Additions:
 - Auto caclulates total paycheck
 - Created test.html
 
-### 6.24
+### 6.24 Removal of paycheck feature v0.4.2
 
 v0.4.2 Additions:
 
-
+- Removal of test.html
+- Removal of test function
+- Removal of paycheck.html
+- Removal of paycheck function
+- Removal of paycheck JS
 
 ## 7.0 Deployment
 
