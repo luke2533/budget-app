@@ -3,33 +3,37 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-10 col-md-5 col-lg-4 col-xl-3">
+            <div class="col-10 col-md-6 col-lg-5 col-xl-4 record-box">
                 <form action="{{ url_for('add_record') }}" method="POST">
-                    <input type="date" placeholder="Date" name="date" id="date" required>
+                    <h1 class="text-center">Add Record</h1>
+                    <p class="text-center">Enter transaction records here:</p>
+                    <input class="record-input" type="date" placeholder="Date" name="date" id="date" required>
                     <hr>
-                    <input type="text" placeholder="Name of card" name="card" id="card" required>
+                    <input class="record-input" type="text" placeholder="Name of card" name="card" id="card" required>
                     <!-- Change to select menu later -->
                     <hr>
-                    <input type="text" placeholder="Transaction name" name="name" id="name" required>
+                    <input class="record-input" type="text" placeholder="Transaction name" name="name" id="name" required>
                     <hr>
-                    <select name="category" id="category" required>
+                    <select class="record-input" name="category" id="category" required>
                         <option value="income">Income</option>
                         <option value="rent">Rent</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="car">Car</option>
                         <option value="debt">Debt</option>
                         <option value="groceries">Groceries</option>
                         <option value="travel">Travel</option>
                         <option value="subscriptions">Subscriptions</option>
                         <option value="holiday">Holdiay</option>
-                        <option value="entertainment">Entertainment</option>
+                        <option value="misc">Misc</option>
                     </select>
                     <hr>
-                    <input type="number" step="0.01" placeholder="Amount" name="amount" id="amount" required>
+                    <input class="record-input" type="number" step="0.01" placeholder="Amount" name="amount" id="amount" required>
                     <hr>
-                    <input type="text" placeholder="Notes" name="notes" id="notes">
+                    <input class="record-input" type="text" placeholder="Notes" name="notes" id="notes">
                     <hr>
-                    <input type="hidden" name="balance" id="balance">
+                    <input class="record-input" type="hidden" name="balance" id="balance">
                     <!-- This is placeholder not sure how i will calculate it -->
-                    <button type="submit">Click here to submit record</button>
+                    <button class="record-btn" type="submit">Click here to submit record</button>
                 </form>
             </div>
         </div>

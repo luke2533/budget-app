@@ -10,6 +10,35 @@
     background-color: rgba(0, 0, 0, 0.2)
 }
 
+/* Home */
+
+.summary-box {
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+    border: black solid 1px;
+    width: 400px;
+    border-radius: 18px;
+    box-shadow: 1px 1px rgb(129, 129, 129);
+    padding: 7px;
+    margin-bottom: 50px;
+}
+
+.record-sm-box {
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+    border: black solid 1px;
+    width: 400px;
+    border-radius: 18px;
+    box-shadow: 1px 1px rgb(129, 129, 129);
+    padding: 7px;
+}
+
+.record-text {
+    margin-bottom: 1px !important;
+}
+
 /* Sign up page */
 
 .form-input {
@@ -17,26 +46,27 @@
     /* Temporary fix for sign up page*/
 }
 
-/* Paycheck */
+/* Add Record */
 
-.paycheck-box {
-    border: solid black 3px;
-    padding: 15px;
-    margin: 20px;
-}
-
-.paycheck-input {
-    margin-bottom: 9.5px;
-}
-
-/* Test */
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    height: 100px;
-    width: 100px;
-    outline: black;
-    background-color: rgba(0, 0, 0, 0.3);
-    background-size: 100%, 100%;
-    border-radius: 50%;
+.record-box {
+    display: flex;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: lightgrey;
     border: 1px solid black;
+    justify-content: center;
+    margin: 15px;
+    margin-top: 25px;
+}
+
+.record-input {
+    width: 300px;
+    padding: 3px;
+    margin-top: 5px;
+}
+
+.record-btn {
+    width: 300px;
+    padding: 3px;
 }

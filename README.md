@@ -243,6 +243,15 @@ v0.4.2 Additions:
 - Removal of paycheck function
 - Removal of paycheck JS
 
+### 6.25 Removal of category tracker, updated add record v0.5.0
+
+v0.5.0 Additions:
+
+- Removal of categories feature temporaily
+- Add record working
+- Add record page basic css
+- home page basic css
+
 ## 7.0 Deployment
 
 ### 7.1 Heroku Deployment
